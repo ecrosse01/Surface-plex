@@ -18,9 +18,11 @@ Cell-surface proteins on tumor cells serve as both key targets for immunotherape
 ## Repository Contents
 
 - `Read_pre-processing.sh`: Shell script for preprocessing sequencing reads, including trimming, UMI extraction, alignment, and deduplication.
-- `Surface-Plex_analysis.R`: R script for creating a read count matrix, performing batch correction, and generating plots.
-- `custom_index.fa`: Custom .fasta file for generating the genome index used in the analysis.
-- `Conditions.txt`: File containing the conditions and well indices for the experiment.
+- `Surface-Plex_analysis.R`: R script for creating a read count matrix, performing batch correction, centered log ratio (CLR) normalization and differential expression testing.
+- `custom_index_1.fa`: Custom .fasta file for generating the genome index used in the analysis for Assay 1 (see manuscript).
+- `custom_index_2.fa`: Custom .fasta file for generating the genome index used in the analysis for Assay 2 (see manuscript).
+- `Conditions_1.txt`: File containing the conditions and well indices for Assay 1.
+- `Conditions_2.txt`: File containing the conditions and well indices for Assay 2.
 
 ## Prerequisites
 
@@ -47,13 +49,33 @@ Cell-surface proteins on tumor cells serve as both key targets for immunotherape
 
 The preprocessing of sequencing reads involves generating an index, trimming reads, extracting UMIs, aligning and deduplicating reads.
 
-a. Clone the repository:
+1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/Surface-plex.git
    cd Surface-plex
 
-b. Use script Read_pre-processing.sh - the script is designed to be run in chunks in an interactive session but can be modified to be executed in full.
+2. Use script Read_pre-processing.sh - the script is designed to be run in chunks in an interactive session but can be modified to be executed in full.
+
+   For reanalysis of the published data use either 'custom_index_1.fa' or 'custom_index_2.fa' for Assays 1 and 2 from the mansucript, respectively.
 
 ### 2. Analysis in R
 
-  
+The R script generates a read count matrix, performs batch correction, centered log ratio (CLR) normalization and differential expression testing.
+
+1. Ensure all R packages listed in the prerequisites are installed.
+
+2. Run Surface-Plex_analysis.R in chunks. Code must be adapted for your specific experimental set up.
+
+The conditions and well indices list for Assays 1 and 2 from the manuscript are in files 'Conditions_1.txt' and 'Conditions_2.txt' respectively.
+
+### Data Availability
+The raw sequencing data used in this analysis have been deposited in the Gene Expression Omnibus (GEO) under accession number GSE268052.
+
+### Citation
+If you use these scripts or data in your research, please cite our manuscript:
+
+[TBD]
+
+### License
+
+
