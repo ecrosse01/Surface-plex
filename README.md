@@ -110,6 +110,8 @@ Run code
    source("scripts/Main_Analysis.R")
    ```
 
+Expected run time: < 10 seconds
+
 ### Data Availability
 The raw sequencing data used in this analysis have been deposited in the Gene Expression Omnibus (GEO) under accession number GSE268052.
 
