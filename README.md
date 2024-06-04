@@ -105,7 +105,7 @@ The steps in this code comprise:
 
 Run code
    ```r
-   source("Main_Analysis.R")
+   source("scripts/Main_Analysis.R")
    ```
 
 ### Data Availability
