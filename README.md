@@ -46,17 +46,23 @@ Cell-surface proteins on tumor cells serve as both key targets for immunotherape
 - **R Script**:
   - R (>= 4.0.0)
   - `tidyverse`
-  - `RColorBrewer`
   - `magrittr`
   - `gtools`
   - `sva`
   - `purrr`
 
-## Instructions
+## TUTORIAL
+
+This tutorial will take you through all the steps of the Surface-plex pipeline analysis. The initial steps require download of raw FastQ data from NCBI Gene Expression Omnibus with the accession number GSE268052. However, you can instead use the pre-generated read matrix for Assay1 from the manuscript, found in data/Assay1_raw_reads_matrix.csv, and proceed from step 5 of the analysis, to recreate the results table for this Assay.
+
+### 1. Clone the repository
+
+git clone 
+
 
 ### 1. Preprocessing Reads
 
-The preprocessing of sequencing reads involves generating an index, trimming reads, extracting UMIs, aligning and deduplicating reads.
+The preprocessing of sequencing reads from raw FastQ involves generating an index, trimming reads, extracting UMIs, aligning and deduplicating reads.
 
 1. Clone the repository:
    ```bash
