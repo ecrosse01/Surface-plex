@@ -120,4 +120,7 @@ If you use these scripts or data in your research, please cite our manuscript:
 
 ### License
 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+
 
