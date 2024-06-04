@@ -102,7 +102,7 @@ The steps in this code comprise:
 3. Calculation of CLR expression differences between compound and the control.
 4. Plotting of AnnexinV vs antigen expression variability for each compound (to determine threshold cutoffs for AnnexinV expression and remove compounds with likely highly cytotoxic properties).
    _See "output/Relationship_between_Compound_Variability_and_Cell_Death.png"_
-6. Output of results table
+6. Output of results table.
    _See "output/Assay1_results.csv"_ 
 
 Run code
