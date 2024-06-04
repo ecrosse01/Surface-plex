@@ -55,33 +55,58 @@ Cell-surface proteins on tumor cells serve as both key targets for immunotherape
 
 This tutorial will take you through all the steps of the Surface-plex pipeline analysis. The initial steps require download of raw FastQ data from NCBI Gene Expression Omnibus with the accession number GSE268052. However, you can instead use the pre-generated read matrix for Assay1 from the manuscript, found in data/Assay1_raw_reads_matrix.csv, and proceed from step 5 of the analysis, to recreate the results table for this Assay.
 
-### 1. Clone the repository
+### 1. Clone the repository 
 
-git clone 
+  ```bash
+git clone https://github.com/ecrosse01/Surface-plex.git
+cd Surface-plex
+```
 
-
-### 1. Preprocessing Reads
+### 2. Preprocessing Reads
 
 The preprocessing of sequencing reads from raw FastQ involves generating an index, trimming reads, extracting UMIs, aligning and deduplicating reads.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/Surface-plex.git
-   cd Surface-plex
+1. Use script Read_pre-processing.sh - the script is designed to be run in chunks in an interactive session but can be modified to be executed in full.
 
-2. Use script Read_pre-processing.sh - the script is designed to be run in chunks in an interactive session but can be modified to be executed in full.
+   For reanalysis of the published data use either 'custom_index_1.fa' or 'custom_index_2.fa' for Assays 1 and 2 from the mansucript, respectively. The raw data can be downloaded from GEO with the accession number GSE268052.
 
-   For reanalysis of the published data use either 'custom_index_1.fa' or 'custom_index_2.fa' for Assays 1 and 2 from the mansucript, respectively.
+   The output of this pipeline are directories containing individual .txt files with counts per antigen for each sample.
 
-### 2. Analysis in R
+### 3. Analysis in R - Generate a matrix of read counts across all samples and antigens.
 
-The R script generates a read count matrix, performs batch correction, centered log ratio (CLR) normalization and differential expression testing.
+This R script generates directly utilizes the count file outputs from Step 2 to create a read count matrix for downstream analysis. Please modify code with correct directory paths.
+The conditions and well indices list for Assays 1 and 2 from the manuscript are in files 'data/Conditions_1.txt' and 'data/Conditions_2a/2b.txt' respectively.
 
 1. Ensure all R packages listed in the prerequisites are installed.
 
-2. Run Surface-Plex_analysis.R in chunks. Code must be adapted for your specific experimental set up.
+2. Run code
+  ```r
+  source("scripts/Generate_Reads_Matrix.R")
+```
+### 3. Analysis in R - Batch correction of matrix 
 
-The conditions and well indices list for Assays 1 and 2 from the manuscript are in files 'Conditions_1.txt' and 'Conditions_2a/2b.txt' respectively.
+This step is optional depending on whether your data was processed across different days / sequenced on multiple lanes etc. Please modify code with correct directory paths.
+
+1. Run code
+   ```r
+   source("scripts/ComBat_batch_correction.R")
+   ```
+
+### 4. Analysis in R - Main analysis - normalization, statistical testing and results output 
+
+A sample matrix for running this main part of the analysis is provided in 'data/Assay1_raw_reads_matrix.csv'. This is a raw read counts matrix from Assay 1 from the manuscript (5x replicates of 84 compounds).
+
+The steps in this code comprise:
+1. Centered Log Ratio normalization of the matrix.
+2. Mann-Whitney U statistical testing of differences between each compound and the control (DMSO).
+3. Calculation of CLR expression differences between compound and the control.
+4. Plotting of AnnexinV vs antigen expression variability for each compound (to determine threshold cutoffs for AnnexinV expression and remove compounds with likely highly cytotoxic properties).
+5. Output of results table 
+
+Run code
+   ```r
+   source("Main_Analysis.R")
+   ```
 
 ### Data Availability
 The raw sequencing data used in this analysis have been deposited in the Gene Expression Omnibus (GEO) under accession number GSE268052.
