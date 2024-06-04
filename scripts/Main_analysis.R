@@ -113,14 +113,15 @@ merged_data <- left_join(variability_index, annexinV_agg, by = "condition")
 
 # Create the plot
 png("output/Relationship_between_Compound_Variability_and_Cell_Death.png")
+
   ggplot(merged_data, aes(x = Variability_Index, y = AnnexinV_avg_diff)) +
     geom_point() +
     theme_minimal() +
     labs(x = "Variability Index (Mean of Absolute Diff.x)",
          y = "Average AnnexinV Diff.x",
          title = "Relationship between Compound Variability and Cell Death")
-dev.off()
 
+dev.off()
 
 
 # 8. FINAL RESULTS OUTPUT TABLE ----------------------------------------------
@@ -129,6 +130,6 @@ results = results %>% left_join (annexinV_agg, by = "condition") %>%
   select(Antigen, condition, statistic, p.value, method, Diff, AnnexinV_avg_diff)
 
 
-write.csv(results, file = "Assay1_results.csv")
+write.csv(results, file = "output/Assay1_results.csv")
 
 
