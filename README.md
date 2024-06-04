@@ -53,7 +53,7 @@ Cell-surface proteins on tumor cells serve as both key targets for immunotherape
 
 ## TUTORIAL
 
-This tutorial will take you through all the steps of the Surface-plex pipeline analysis. The initial steps require download of raw FastQ data from NCBI Gene Expression Omnibus with the accession number GSE268052. However, you can instead use the pre-generated read matrix for Assay1 from the manuscript, found in data/Assay1_raw_reads_matrix.csv, and proceed from step 5 of the analysis, to recreate the results table for this Assay.
+This tutorial will take you through all the steps of the Surface-plex pipeline analysis. The initial steps require download of raw FastQ data from NCBI Gene Expression Omnibus with the accession number GSE268052. However, you can instead use the pre-generated read matrix for Assay1 from the manuscript, found in data/Assay1_raw_reads_matrix.csv, and **proceed from step 5 of the analysis**, to recreate the results table for this Assay.
 
 ### 1. Clone the repository 
 
@@ -83,16 +83,16 @@ The conditions and well indices list for Assays 1 and 2 from the manuscript are 
   ```r
   source("scripts/Generate_Reads_Matrix.R")
 ```
-### 3. Analysis in R - Batch correction of matrix 
+### 4. Analysis in R - Batch correction of matrix 
 
-This step is optional depending on whether your data was processed across different days / sequenced on multiple lanes etc. Please modify code with correct directory paths.
+**This step is optional** depending on whether your data was processed across different days / sequenced on multiple lanes etc. Please modify code with correct directory paths.
 
 1. Run code
    ```r
    source("scripts/ComBat_batch_correction.R")
    ```
 
-### 4. Analysis in R - Main analysis - normalization, statistical testing and results output 
+### 5. Analysis in R - Main analysis - normalization, statistical testing and results output 
 
 A sample matrix for running this main part of the analysis is provided in 'data/Assay1_raw_reads_matrix.csv'. This is a raw read counts matrix from Assay 1 from the manuscript (5x replicates of 84 compounds).
 
