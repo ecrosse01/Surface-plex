@@ -101,7 +101,9 @@ The steps in this code comprise:
 2. Mann-Whitney U statistical testing of differences between each compound and the control (DMSO).
 3. Calculation of CLR expression differences between compound and the control.
 4. Plotting of AnnexinV vs antigen expression variability for each compound (to determine threshold cutoffs for AnnexinV expression and remove compounds with likely highly cytotoxic properties).
-5. Output of results table 
+   _See "output/Relationship_between_Compound_Variability_and_Cell_Death.png"_
+6. Output of results table
+   _See "output/Assay1_results.csv"_ 
 
 Run code
    ```r
